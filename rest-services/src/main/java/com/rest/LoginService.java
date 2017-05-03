@@ -1,0 +1,30 @@
+package com.rest;
+
+import com.entity_core.UserInfo;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.math.BigInteger;
+
+/**
+ * Service for registration and login
+ * Created by Aesonne on 02.05.2017
+ * TODO: just a stub
+ */
+@RestController
+public class LoginService {
+
+    /**
+     * Service for login
+     * @param login user's login and nick
+     * @param pswd user's password
+     * @return user info including identifier
+     */
+    @RequestMapping("/login")
+    public UserInfo login(@RequestParam(value="login", defaultValue="usr1") String login,
+                              @RequestParam(value="pswd", defaultValue="123456") String pswd) {
+        return new UserInfo(BigInteger.ONE, "Chui");
+    }
+
+}
