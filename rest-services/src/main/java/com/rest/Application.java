@@ -5,7 +5,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 
 /**
- * Spring configuration for com.rest web services
+ * Spring configuration for web services
  * Created by Aesonne on 03.05.2017
  */
 @SpringBootApplication

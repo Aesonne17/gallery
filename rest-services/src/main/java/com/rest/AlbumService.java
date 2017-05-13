@@ -2,6 +2,7 @@ package com.rest;
 
 import com.entity_core.Album;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,7 +23,7 @@ public class AlbumService {
      * @param id album identifier
      * @return album
      */
-    @RequestMapping("/album")
+    @RequestMapping(value = "/album", method = RequestMethod.GET)
     public Album getAlbumById(@RequestParam(value="id", defaultValue="1") String id) {
         return new Album(new BigInteger(id), new ArrayList<BigInteger>(), new ArrayList<BigInteger>(), "zzz");
     }
@@ -31,7 +32,7 @@ public class AlbumService {
      * Service for uploading album's list
      * @return album list
      */
-    @RequestMapping("/albums")
+    @RequestMapping(value = "/albums", method = RequestMethod.GET)
     public List<Album> getAlbumsList() {
         List<Album> result = new ArrayList<Album>();
         result.add(new Album(BigInteger.ONE, new ArrayList<BigInteger>(), new ArrayList<BigInteger>(), "zzz"));

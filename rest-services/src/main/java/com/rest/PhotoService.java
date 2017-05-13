@@ -2,6 +2,7 @@ package com.rest;
 
 import com.entity_core.Photo;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,7 +22,7 @@ public class PhotoService {
      * @param id album identifier
      * @return album
      */
-    @RequestMapping("/photo")
+    @RequestMapping(value = "/photo", method = RequestMethod.GET)
     public Photo getPhotoById(@RequestParam(value="id", defaultValue="1") String id) {
         return new Photo(new BigInteger(id), new ArrayList<BigInteger>(), "xxx", "".getBytes());
     }
