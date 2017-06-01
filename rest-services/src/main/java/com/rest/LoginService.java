@@ -6,8 +6,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.math.BigInteger;
-
 /**
  * Service for registration and login
  * Created by Aesonne on 02.05.2017
@@ -25,7 +23,7 @@ public class LoginService {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public UserInfo login(@RequestParam(value="login", defaultValue="usr1") String login,
                               @RequestParam(value="pswd", defaultValue="123456") String pswd) {
-        return new UserInfo(BigInteger.ONE, "Chui");
+        return new UserInfo(1l, "Chui");
     }
 
 }

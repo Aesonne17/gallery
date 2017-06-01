@@ -1,13 +1,13 @@
 package com.rest;
 
 import com.entity_core.Album;
+import com.jdbc_dao.AlbumDaoImpl;
+import com.jdbc_dao.IAlbumDao;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,7 +25,7 @@ public class AlbumService {
      */
     @RequestMapping(value = "/album", method = RequestMethod.GET)
     public Album getAlbumById(@RequestParam(value="id", defaultValue="1") String id) {
-        return new Album(new BigInteger(id), new ArrayList<BigInteger>(), new ArrayList<BigInteger>(), "zzz");
+        return new Album(new Long(id), 0l, "zzz");
     }
 
     /**
@@ -34,10 +34,8 @@ public class AlbumService {
      */
     @RequestMapping(value = "/albums", method = RequestMethod.GET)
     public List<Album> getAlbumsList() {
-        List<Album> result = new ArrayList<Album>();
-        result.add(new Album(BigInteger.ONE, new ArrayList<BigInteger>(), new ArrayList<BigInteger>(), "zzz"));
-        result.add(new Album(BigInteger.TEN, new ArrayList<BigInteger>(), new ArrayList<BigInteger>(), "nnn"));
-        return result;
+        IAlbumDao dao = new AlbumDaoImpl();
+        return dao.getAlbums();
     }
 
 }

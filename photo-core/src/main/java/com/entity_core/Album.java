@@ -1,10 +1,7 @@
 package com.entity_core;
 
-import java.math.BigInteger;
-import java.util.List;
-
 /**
- * Entity for album containing photos, other albums and additional information about the album
+ * Entity for album with all information about the album
  * Created by Aesonne on 02.05.2017
  */
 public class Album {
@@ -12,52 +9,38 @@ public class Album {
     /**
      * Identifier
      */
-    private BigInteger id;
+    private Long id;
 
     /**
-     * Identifiers of photos belonging to the album
+     * Identifier of parent album
      */
-    private List<BigInteger> photoIds;
-
-    /**
-     * Identifiers of albums inside to the album
-     */
-    private List<BigInteger> albumsIds;
+    private Long parentId;
 
     /**
      * Description for album
      */
     private String description;
 
-    public Album(BigInteger id, List<BigInteger> photoIds, List<BigInteger> albumsId, String description) {
+    public Album(Long id, Long parentId, String description) {
         this.id = id;
-        this.photoIds = photoIds;
-        this.albumsIds = albumsId;
+        this.parentId = parentId;
         this.description = description;
     }
 
-    public BigInteger getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(BigInteger id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public List<BigInteger> getPhotoIds() {
-        return photoIds;
+    public Long getParentId() {
+        return parentId;
     }
 
-    public void setPhotoIds(List<BigInteger> photoIds) {
-        this.photoIds = photoIds;
-    }
-
-    public List<BigInteger> getAlbumsIds() {
-        return albumsIds;
-    }
-
-    public void setAlbumsIds(List<BigInteger> albumsIds) {
-        this.albumsIds = albumsIds;
+    public void setParentId(Long parentId) {
+        this.parentId = parentId;
     }
 
     public String getDescription() {

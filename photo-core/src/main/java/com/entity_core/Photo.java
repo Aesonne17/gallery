@@ -1,8 +1,5 @@
 package com.entity_core;
 
-import java.math.BigInteger;
-import java.util.List;
-
 /**
  * Entity for photo, contains all the necessary information in addition to the image itself
  * Created by Aesonne on 02.05.2017
@@ -12,12 +9,12 @@ public class Photo {
     /**
      * Identifier
      */
-    private BigInteger id;
+    private Long id;
 
     /**
-     * List of albums to which the photo belongs
+     * Album to which the photo belongs
      */
-    private List<BigInteger> albumIds;
+    private Long albumId;
 
     /**
      * Comment to photo
@@ -26,12 +23,13 @@ public class Photo {
 
     /**
      * Image
+     * TODO: decide the storage format
      */
     private byte[] img;
 
-    public Photo(BigInteger id, List<BigInteger> albumIds, String comment, byte[] img) {
+    public Photo(Long id, Long albumId, String comment, byte[] img) {
         this.id = id;
-        this.albumIds = albumIds;
+        this.albumId = albumId;
         this.comment = comment;
         this.img = img;
     }
@@ -41,20 +39,20 @@ public class Photo {
      */
     private byte[] image;
 
-    public BigInteger getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(BigInteger id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public List<BigInteger> getAlbumIds() {
-        return albumIds;
+    public Long getAlbumId() {
+        return albumId;
     }
 
-    public void setAlbumIds(List<BigInteger> albumIds) {
-        this.albumIds = albumIds;
+    public void setAlbumId(Long albumId) {
+        this.albumId = albumId;
     }
 
     public String getComment() {

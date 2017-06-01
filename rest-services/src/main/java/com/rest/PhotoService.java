@@ -24,7 +24,7 @@ public class PhotoService {
      */
     @RequestMapping(value = "/photo", method = RequestMethod.GET)
     public Photo getPhotoById(@RequestParam(value="id", defaultValue="1") String id) {
-        return new Photo(new BigInteger(id), new ArrayList<BigInteger>(), "xxx", "".getBytes());
+        return new Photo(new Long(id), 0l, "xxx", "".getBytes());
     }
 
 }
