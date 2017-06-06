@@ -2,8 +2,11 @@ package com;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.sql.DataSource;
+import java.io.IOException;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
@@ -31,7 +34,7 @@ public class DbCreator {
             connection = ds.getConnection();
             executeScript("db-scheme.sql", connection);
             executeScript("demo-data.sql", connection);
-        } catch (Exception e) {
+        } catch (NamingException | SQLException e) {
             e.printStackTrace();
         } finally {
             if (connection != null) {
@@ -51,6 +54,7 @@ public class DbCreator {
      * TODO: need logging
      */
     private void executeScript(String fileName, Connection connection) {
+        PreparedStatement ps = null;
         try {
             URL url = getClass().getClassLoader().getResource(fileName);
             if (url == null) {
@@ -64,10 +68,18 @@ public class DbCreator {
             String query = new String(Files.readAllBytes(Paths.get(uri)));
             zipfs.close();
             // execute script
-            PreparedStatement ps = connection.prepareStatement(query);
+            ps = connection.prepareStatement(query);
             ps.execute();
-        } catch (Exception e) {
+        } catch (URISyntaxException | IOException | SQLException e) {
             e.printStackTrace();
+        } finally {
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 

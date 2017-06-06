@@ -14,7 +14,6 @@ MVN_SOURSE_DIRECTORY=PWD_DIRECTORY[:-37]
 TOMCAT_NAME="gallery-tomcat"
 TOMCAT_ARCHIVE_NAME=TOMCAT_NAME + ".zip"
 TOMCAT_WAR_FOLDER="webapps"
-TOMCAT_JAR_FOLDER=os.path.join("lib", "common")
 TARGET_FOLDER="target"
 
 #build project
@@ -45,12 +44,6 @@ os.remove(os.path.join(SERVER_DIRECTORY, TOMCAT_ARCHIVE_NAME))
 
 #copying artifact
 print ("Deploying app...")
-shutil.copy(os.path.join(MVN_SOURSE_DIRECTORY, "dao", TARGET_FOLDER, "dao-1.0-SNAPSHOT.jar"),
-os.path.join(SERVER_FULL_PATH, TOMCAT_JAR_FOLDER, "dao.jar"))
-shutil.copy(os.path.join(MVN_SOURSE_DIRECTORY, "auth", TARGET_FOLDER, "auth-1.0-SNAPSHOT.jar"),
-os.path.join(SERVER_FULL_PATH, TOMCAT_JAR_FOLDER, "auth.jar"))
-shutil.copy(os.path.join(MVN_SOURSE_DIRECTORY, "photo-core", TARGET_FOLDER, "photo-core-1.0-SNAPSHOT.jar"),
-os.path.join(SERVER_FULL_PATH, TOMCAT_JAR_FOLDER, "photo-core.jar"))
 shutil.copy(os.path.join(MVN_SOURSE_DIRECTORY, "rest-services", TARGET_FOLDER, "rest-services-1.0-SNAPSHOT.war"),
 os.path.join(SERVER_FULL_PATH, TOMCAT_WAR_FOLDER, "rest-services.war"))
 
